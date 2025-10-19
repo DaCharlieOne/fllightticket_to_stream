@@ -35,7 +35,7 @@
     boardingTime: "14:00 - 14:25",
     
     // PILOT INFO
-    PilotName: "Da Charlie Pilot",
+    pilotName: "Da Charlie Pilot",
     
     // SOCIAL LINKS
     youtube: "https://www.youtube.com/@dacharlie111",
@@ -349,7 +349,7 @@
           <div class="muted" id="airlineText">Аэрофлот • AeroStream</div>
           <h1 id="routeText">BANGKOK (BKK) - MOSCOW (SVO)</h1>
           <div class="small" id="streamText">Live Stream: Virtual Flight Companion & Cockpit with DaCharliePilot</div>
-          <div class="pilot-info">Your pilot: <span id="PilotName">Da Charlie Pilot</span></div>
+          <div class="pilot-info">Your pilot: <span id="pilotName">Da Charlie Pilot</span></div>
         </div>
       </div>
 
@@ -488,15 +488,15 @@
     ? CONFIG.operatingAirline + "/" + CONFIG.airlineCode + " " + CONFIG.flightNumber
     : CONFIG.airlineCode + " " + CONFIG.flightNumber;
 
-  // Apply translations and dynamic content - ALLE FEHLER BEHOBEN
+  // Apply translations and dynamic content - FLUGNUMMER WIRD JETZT ANGEZEIGT
   document.getElementById('airlineText').textContent = t.airline;
-  document.getElementById('routeText').textContent = t.route; // JETZT: BANGKOK (BKK) - MOSCOW (SVO)
+  document.getElementById('routeText').textContent = t.route;
   document.getElementById('streamText').textContent = t.stream;
   document.getElementById('pilotName').textContent = CONFIG.pilotName;
-  document.getElementById('flightNumberDisplay').textContent = fullFlightNumber; // AFL/SU 273
+  document.getElementById('flightNumberDisplay').textContent = fullFlightNumber; // ✅ AFL/SU 273 WIRD ANGEZEIGT
   document.getElementById('aircraftInfo').textContent = t.aircraft + ": " + CONFIG.aircraftType;
   document.getElementById('icaoCodes').textContent = CONFIG.departure.icao + " - " + CONFIG.arrival.icao;
-  document.getElementById('gateInfo').textContent = CONFIG.departure.gate + " / " + CONFIG.departure.terminal; // JETZT KORREKT: C12 / 1
+  document.getElementById('gateInfo').textContent = CONFIG.departure.gate + " / " + CONFIG.departure.terminal;
   document.getElementById('departureTime').textContent = t.today + " • " + CONFIG.departureTime;
   document.getElementById('boardingEnd').textContent = "14:25";
   document.getElementById('btnText').textContent = t.btn;
@@ -507,9 +507,9 @@
   document.getElementById('arrivalTerminal').textContent = CONFIG.arrival.terminal;
   document.getElementById('enjoyText').textContent = t.enjoy;
   document.getElementById('codesText').textContent = CONFIG.departure.code + " ✈︎ " + CONFIG.arrival.code;
-  document.getElementById('flightCodeDisplay').textContent = CONFIG.airlineCode + CONFIG.flightNumber; // Rechts oben: SU273
+  document.getElementById('flightCodeDisplay').textContent = CONFIG.airlineCode + CONFIG.flightNumber;
   
-  // Update query selectors for labels - ALLE FEHLER BEHOBEN
+  // Update query selectors for labels
   const labels = document.querySelectorAll('.label');
   labels[0].textContent = t.flight;
   labels[1].textContent = t.routeLabel;
@@ -517,7 +517,7 @@
   labels[3].textContent = t.dateTime;
   labels[4].textContent = t.boardingUntil;
   labels[5].textContent = t.passenger;
-  labels[6].textContent = t.seat; // JETZT KORREKT: "Seat" statt "SEAT"
+  labels[6].textContent = t.seat;
   
   document.querySelector('.passenger-section .value').textContent = t.guest;
 
