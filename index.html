@@ -10,7 +10,7 @@
   // STREAM & REDIRECT SETTINGS
   const CONFIG = {
     targetUrl: "https://youtube.com/live/qsfxLl35R04?feature=share", // YOUR YOUTUBE STREAM LINK
-    redirectAfter: 12 * 1000, // 10 seconds until auto-redirect (0 for immediate)
+    redirectAfter: 12 * 1000, // 12 seconds until auto-redirect (0 for immediate)
     
     // FLIGHT DETAILS
     airlineCode: "S7", // Airline IATA code
@@ -344,16 +344,16 @@
     
     <div class="left">
       <div class="airline">
-        <div class="logo">АЭ</div>
+        <div class="logo">S7</div>
         <div>
-          <div class="muted" id="airlineText">Аэрофлот • AeroStream</div>
-          <h1 id="routeText">BANGKOK (BKK) - MOSCOW (SVO)</h1>
+          <div class="muted" id="airlineText">S7 Airlines • AeroStream</div>
+          <h1 id="routeText">SHANGHAI (PVG) - VLADIVOSTOK (VVO)</h1>
           <div class="small" id="streamText">Live Stream: Virtual Flight Companion & Cockpit with DaCharliePilot</div>
           <div class="pilot-info">Your pilot: <span id="pilotName">Da Charlie Pilot</span></div>
         </div>
       </div>
 
-      <div class="big" id="codesText">BKK ✈︎ SVO</div>
+      <div class="big" id="codesText">PVG ✈︎ VVO</div>
 
       <div class="flight-details-grid">
         <div class="detail-group">
@@ -364,16 +364,16 @@
         
         <div class="detail-group">
           <div class="label">Route</div>
-          <div class="value large" id="icaoCodes">VTBS - UUEE</div>
+          <div class="value large" id="icaoCodes">ZSPD - UHWW</div>
           <div class="label">Gate / Terminal</div>
-          <div class="value" id="gateInfo">C12 / 1</div>
+          <div class="value" id="gateInfo">D65 / 2</div>
         </div>
         
         <div class="detail-group">
           <div class="label">Date & Time</div>
-          <div class="value large" id="departureTime">Today • 14:30</div>
+          <div class="value large" id="departureTime">Today • 20:25Z</div>
           <div class="label">Boarding until</div>
-          <div class="value" id="boardingEnd">14:25</div>
+          <div class="value" id="boardingEnd">20:00</div>
         </div>
       </div>
 
@@ -394,7 +394,7 @@
         <a id="goBtn" class="btn" href="#" role="button">
           <span id="btnText">Go to Stream ▶️</span>
         </a>
-        <div class="small" id="countdownText">Automatic redirect in <span id="seconds">10</span> seconds</div>
+        <div class="small" id="countdownText">Automatic redirect in <span id="seconds">12</span> seconds</div>
       </div>
 
       <div class="social-links">
@@ -418,9 +418,9 @@
         <p style="font-size:18px;font-weight:700" id="boardingText">BOARDING</p>
         <p class="muted" id="readyText">Ready for takeoff?</p>
         <div style="font-size:44px;font-weight:800;letter-spacing:6px">A1</div>
-        <div class="boarding-time" id="boardingTime">Boarding: 14:00 - 14:25</div>
+        <div class="boarding-time" id="boardingTime">Boarding: 19:30 - 20:00</div>
         <div class="label" style="color: #ccc; margin-top: 10px;">Terminal</div>
-        <div class="value" style="color: #fff; font-size: 20px;" id="arrivalTerminal">D</div>
+        <div class="value" style="color: #fff; font-size: 20px;" id="arrivalTerminal">A</div>
       </div>
       <div class="countdown" id="enjoyText">Get the best seat — enjoy the flight!</div>
     </div>
@@ -431,11 +431,11 @@
   const userLanguage = navigator.language || navigator.userLanguage;
   const isGerman = userLanguage.startsWith('de');
   
-  // Translations
+  // Translations - JETZT DYNAMISCH AUS DER CONFIG
   const translations = {
     de: {
-      airline: "Аэрофлот • AeroStream",
-      route: "BANGKOK (BKK) - MOSCOW (SVO)",
+      airline: "S7 Airlines • AeroStream",
+      route: CONFIG.departure.city + " (" + CONFIG.departure.code + ") - " + CONFIG.arrival.city + " (" + CONFIG.arrival.code + ")",
       stream: "Live‑Stream: Virtuelle Flugbegleitung & Cockpit mit DaCharliePilot",
       pilot: "Ihr Pilot:",
       flight: "Flug",
@@ -457,8 +457,8 @@
       seat: "Sitz"
     },
     en: {
-      airline: "Аэрофлот • AeroStream",
-      route: "BANGKOK (BKK) - MOSCOW (SVO)", 
+      airline: "S7 Airlines • AeroStream",
+      route: CONFIG.departure.city + " (" + CONFIG.departure.code + ") - " + CONFIG.arrival.city + " (" + CONFIG.arrival.code + ")",
       stream: "Live Stream: Virtual Flight Companion & Cockpit with DaCharliePilot",
       pilot: "Your pilot:",
       flight: "Flight",
@@ -483,22 +483,22 @@
 
   const t = isGerman ? translations.de : translations.en;
 
-  // Generate flight information - KORREKT MIT AFL/SU 273
+  // Generate flight information
   const fullFlightNumber = CONFIG.operatingAirline && CONFIG.operatingAirline !== CONFIG.airlineCode 
     ? CONFIG.operatingAirline + "/" + CONFIG.airlineCode + " " + CONFIG.flightNumber
     : CONFIG.airlineCode + " " + CONFIG.flightNumber;
 
-  // Apply translations and dynamic content - FLUGNUMMER WIRD JETZT ANGEZEIGT
+  // Apply translations and dynamic content - ALLES AUS DER CONFIG
   document.getElementById('airlineText').textContent = t.airline;
-  document.getElementById('routeText').textContent = t.route;
+  document.getElementById('routeText').textContent = t.route; // JETZT: SHANGHAI (PVG) - VLADIVOSTOK (VVO)
   document.getElementById('streamText').textContent = t.stream;
   document.getElementById('pilotName').textContent = CONFIG.pilotName;
-  document.getElementById('flightNumberDisplay').textContent = fullFlightNumber; // ✅ AFL/SU 273 WIRD ANGEZEIGT
+  document.getElementById('flightNumberDisplay').textContent = fullFlightNumber; // SBI/S7 6246
   document.getElementById('aircraftInfo').textContent = t.aircraft + ": " + CONFIG.aircraftType;
   document.getElementById('icaoCodes').textContent = CONFIG.departure.icao + " - " + CONFIG.arrival.icao;
   document.getElementById('gateInfo').textContent = CONFIG.departure.gate + " / " + CONFIG.departure.terminal;
   document.getElementById('departureTime').textContent = t.today + " • " + CONFIG.departureTime;
-  document.getElementById('boardingEnd').textContent = "14:25";
+  document.getElementById('boardingEnd').textContent = "20:00";
   document.getElementById('btnText').textContent = t.btn;
   document.getElementById('countdownText').innerHTML = t.countdown + " <span id='seconds'>" + (CONFIG.redirectAfter / 1000) + "</span> " + t.seconds;
   document.getElementById('boardingText').textContent = t.boarding;
@@ -556,4 +556,3 @@
 </script>
 </body>
 </html>
-
