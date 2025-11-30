@@ -9,26 +9,26 @@
 <script>
   // STREAM & REDIRECT SETTINGS
   const CONFIG = {
-    targetUrl: "https://youtube.com/live/N5a3BJwb0kE?feature=share", // YOUR YOUTUBE STREAM LINK
+    targetUrl: "https://youtube.com/live/HkqfNPEHeLw?feature=share", // YOUR YOUTUBE STREAM LINK
     redirectAfter: 20 * 1000, // 20 seconds until auto-redirect (0 for immediate)
     
     // FLIGHT DETAILS
     airlineCode: "AFL", // Airline IATA code
-    flightNumber: "922", // Flight number
-    operatingAirline: "SU922", // Operating airline code
-    aircraftType: "B77W", // Aircraft type A320, B737, etc.
+    flightNumber: "9931", // Flight number
+    operatingAirline: "SU9931", // Operating airline code
+    aircraftType: "A359", // Aircraft type A320, B737, etc.
     
     departure: {
-      code: "VVO",
-      icao: "UHWW",
-      city: "VLADIVOSTOK",
+      code: "KGD",
+      icao: "UMKK",
+      city: "KALININGRAD",
       terminal: "N/A",
       gate: "N/A"
     },
     arrival: {
-      code: "HKG", 
-      icao: "VHHH",
-      city: "HONG KONG",
+      code: "OSL", 
+      icao: "ENGM",
+      city: "OSLO",
       terminal: "N/A"
     },
     departureTime: "N/A",
@@ -358,9 +358,9 @@
     
     <div class="left">
       <div class="airline">
-        <div class="logo">AFL</div>
+        <div class="logo">S7</div>
         <div>
-          <div class="muted" id="airlineText">AEROFLOT • AeroStream</div>
+          <div class="muted" id="airlineText">S7 Airlines • AeroStream</div>
           <h1 id="routeText">SHANGHAI (PVG) - VLADIVOSTOK (VVO)</h1>
           <div class="small" id="streamText">Live Stream: Virtual Flight Companion & Cockpit with DaCharliePilot</div>
           <div class="pilot-info">Your pilot: <span id="pilotName">Da Charlie Pilot</span></div>
@@ -449,7 +449,7 @@
   // Translations - JETZT DYNAMISCH AUS DER CONFIG
   const translations = {
     de: {
-      airline: "AEROFLOT • AeroStream",
+      airline: "S7 Airlines • AeroStream",
       route: CONFIG.departure.city + " (" + CONFIG.departure.code + ") - " + CONFIG.arrival.city + " (" + CONFIG.arrival.code + ")",
       stream: "Live‑Stream: Virtuelle Flugbegleitung & Cockpit mit DaCharliePilot",
       pilot: "Ihr Pilot:",
@@ -472,7 +472,7 @@
       seat: "Sitz"
     },
     en: {
-      airline: "AEROFLOT • AeroStream",
+      airline: "S7 Airlines • AeroStream",
       route: CONFIG.departure.city + " (" + CONFIG.departure.code + ") - " + CONFIG.arrival.city + " (" + CONFIG.arrival.code + ")",
       stream: "Live Stream: Virtual Flight Companion & Cockpit with DaCharliePilot",
       pilot: "Your pilot:",
